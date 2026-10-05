@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
 
+/* Colores y tipografía que se reutilizan en toda la página. */
 :root {
   font-family: "DM Sans", sans-serif;
   color: #202a3b;
@@ -21,6 +22,7 @@
   box-sizing: border-box;
 }
 
+/* Fondo general y estilos base de los controles. */
 body {
   min-width: 320px;
   min-height: 100vh;
@@ -83,6 +85,7 @@ input {
   font-weight: 600;
 }
 
+/* Título, explicación y pequeño esquema del flujo MVC. */
 .page-content {
   width: min(100% - 48px, 1016px);
   margin: 0 auto;
@@ -188,6 +191,7 @@ h1 {
   white-space: nowrap;
 }
 
+/* Distribución de los paneles principales. */
 .workspace {
   display: grid;
   grid-template-columns: minmax(290px, 0.82fr) minmax(0, 1.35fr);
@@ -202,6 +206,7 @@ h1 {
   box-shadow: 0 8px 24px rgba(47, 63, 91, 0.035);
 }
 
+/* Formulario para dar de alta usuarios. */
 .form-panel {
   padding: 24px;
 }
@@ -354,6 +359,7 @@ h1 {
   font-weight: 700;
 }
 
+/* Directorio, contador y estado inicial sin usuarios. */
 .directory-panel {
   min-height: 338px;
   padding: 24px;
@@ -536,6 +542,7 @@ h1 {
   font-size: 10px;
 }
 
+/* Pie de página y pequeños detalles de presentación. */
 .page-footer {
   display: flex;
   align-items: center;
@@ -570,6 +577,7 @@ h1 {
   }
 }
 
+/* En pantallas angostas, los paneles se apilan para seguir siendo legibles. */
 @media (max-width: 720px) {
   .topbar {
     padding: 0 22px;
@@ -589,6 +597,7 @@ h1 {
   }
 }
 
+/* Ajustes para teléfonos pequeños. */
 @media (max-width: 440px) {
   .topbar {
     height: 60px;
@@ -651,6 +660,7 @@ h1 {
   }
 }
 
+/* Respeta la preferencia del sistema para reducir animaciones. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

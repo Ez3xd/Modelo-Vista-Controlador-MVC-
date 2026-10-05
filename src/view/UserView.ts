@@ -6,6 +6,7 @@ export interface UserViewHandlers {
 }
 
 export class UserView {
+  // Guardamos las referencias para no tener que buscarlas de nuevo en cada evento.
   private readonly form = this.getElement<HTMLFormElement>("#user-form");
   private readonly nameInput = this.getElement<HTMLInputElement>("#user-name");
   private readonly emailInput = this.getElement<HTMLInputElement>("#user-email");
@@ -15,11 +16,13 @@ export class UserView {
   private readonly emptyState = this.getElement<HTMLDivElement>("#empty-state");
 
   bindHandlers(handlers: UserViewHandlers): void {
+    // La vista recoge los datos, pero deja que el controlador decida qué hacer.
     this.form.addEventListener("submit", (event) => {
       event.preventDefault();
       handlers.onAddUser(this.nameInput.value, this.emailInput.value);
     });
 
+    // Un solo listener en la lista sirve para todos los botones de eliminar.
     this.userList.addEventListener("click", (event) => {
       const target = event.target;
       if (!(target instanceof Element)) {
@@ -37,6 +40,7 @@ export class UserView {
   }
 
   renderUsers(users: readonly User[]): void {
+    // Se reconstruye la lista desde los datos actuales del modelo.
     this.userList.replaceChildren(...users.map((user) => this.createUserItem(user)));
     this.userCount.textContent = `${users.length} ${users.length === 1 ? "usuario" : "usuarios"}`;
     this.emptyState.hidden = users.length > 0;
@@ -54,6 +58,7 @@ export class UserView {
   }
 
   private createUserItem(user: User): HTMLLIElement {
+    // Se crean los elementos con DOM APIs y textContent para mostrar texto sin interpretarlo como HTML.
     const item = document.createElement("li");
     item.className = "user-item";
 
@@ -88,6 +93,7 @@ export class UserView {
   }
 
   private getInitials(name: string): string {
+    // El avatar usa como máximo la primera letra de las dos primeras palabras.
     return name
       .split(/\s+/)
       .filter(Boolean)
@@ -97,6 +103,7 @@ export class UserView {
   }
 
   private getElement<T extends Element>(selector: string): T {
+    // Fallamos pronto si el HTML no contiene algún elemento que la vista necesita.
     const element = document.querySelector<T>(selector);
     if (!element) {
       throw new Error(`No se encontró el elemento requerido: ${selector}`);
