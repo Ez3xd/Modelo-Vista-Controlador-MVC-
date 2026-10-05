@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Demostración del patrón Modelo-Vista-Controlador con TypeScript."
+    />
+    <meta name="theme-color" content="#f5f7fb" />
+    <title>Directorio de usuarios | MVC con TypeScript</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Inicio - Directorio MVC">
+          <span class="brand-mark" aria-hidden="true">M</span>
+          <span>POE <span class="brand-divider">/</span> Clase 9</span>
+        </a>
+        <span class="topbar-label">Demostración MVC</span>
+      </header>
+
+      <main class="page-content">
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> MODELO · VISTA · CONTROLADOR</p>
+          <h1 id="page-title">Directorio de usuarios</h1>
+          <p class="intro-copy">
+            Agrega y administra usuarios en una interfaz construida con TypeScript y el patrón MVC.
+          </p>
+        </section>
+
+        <div class="mvc-flow" aria-label="Flujo de la aplicación: Vista, Controlador, Modelo">
+          <span class="flow-part"><span class="flow-number">01</span> Vista</span>
+          <span class="flow-arrow" aria-hidden="true">→</span>
+          <span class="flow-part"><span class="flow-number">02</span> Controlador</span>
+          <span class="flow-arrow" aria-hidden="true">→</span>
+          <span class="flow-part"><span class="flow-number">03</span> Modelo</span>
+          <span class="flow-arrow flow-return" aria-hidden="true">↩</span>
+          <span class="flow-return-label">actualiza la vista</span>
+        </div>
+
+        <section class="workspace" aria-label="Gestión de usuarios">
+          <section class="panel form-panel" aria-labelledby="form-title">
+            <div class="panel-heading">
+              <div class="heading-icon add-icon" aria-hidden="true">+</div>
+              <div>
+                <h2 id="form-title">Agregar usuario</h2>
+                <p>Completa los datos para registrarlo.</p>
+              </div>
+            </div>
+
+            <form id="user-form" novalidate>
+              <div class="field">
+                <label for="user-name">Nombre completo</label>
+                <input
+                  id="user-name"
+                  name="name"
+                  type="text"
+                  placeholder="Ej. Ana García"
+                  autocomplete="name"
+                  maxlength="80"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="user-email">Correo electrónico</label>
+                <input
+                  id="user-email"
+                  name="email"
+                  type="email"
+                  placeholder="ana@ejemplo.com"
+                  autocomplete="email"
+                  maxlength="254"
+                  required
+                />
+              </div>
+              <p id="form-message" class="form-message" role="alert" aria-live="polite"></p>
+              <button class="primary-button" type="submit">
+                <span aria-hidden="true">+</span>
+                Registrar usuario
+              </button>
+            </form>
+
+            <div class="form-note">
+              <span class="note-icon" aria-hidden="true">i</span>
+              <span>El correo debe ser único. La validación pertenece al modelo.</span>
+            </div>
+          </section>
+
+          <section class="panel directory-panel" aria-labelledby="directory-title">
+            <div class="directory-heading">
+              <div class="panel-heading">
+                <div class="heading-icon people-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" role="img" aria-label="Usuarios">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="10" cy="7" r="4" />
+                    <path d="M20 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
+                </div>
+                <div>
+                  <h2 id="directory-title">Usuarios registrados</h2>
+                  <p>Los datos se mantienen durante esta sesión.</p>
+                </div>
+              </div>
+              <span id="user-count" class="count-badge">0 usuarios</span>
+            </div>
+
+            <ul id="user-list" class="user-list" aria-live="polite" aria-relevant="additions removals"></ul>
+            <div id="empty-state" class="empty-state">
+              <div class="empty-illustration" aria-hidden="true">
+                <svg viewBox="0 0 64 64">
+                  <circle cx="32" cy="22" r="11" />
+                  <path d="M12 54c1-11 8-17 20-17s19 6 20 17" />
+                  <path d="M48 15v12M42 21h12" />
+                </svg>
+              </div>
+              <h3>Tu directorio está vacío</h3>
+              <p>Agrega el primer usuario con el formulario.</p>
+            </div>
+          </section>
+        </section>
+
+        <footer class="page-footer">
+          <span class="footer-status"><span></span> Aplicación lista</span>
+          <span>Ejemplo académico · TypeScript</span>
+        </footer>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
